@@ -1,0 +1,119 @@
+/* 字段管理模块样式 */
+
+/* 标题副标题卡片容器 */
+.title-subtitle-container {
+    display: flex;
+    gap: 15px;
+}
+
+.title-subtitle-container .field-card {
+    flex: 1;
+}
+
+/* 位置卡片容器 */
+.position-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+/* 小卡片样式 */
+.field-card {
+    border: 1px solid #d4dce6;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.field-card-header {
+    background: #f5f7fa;
+    padding: 8px 12px;
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+.field-card-body {
+    padding: 12px;
+}
+
+.field-select {
+    width: 100%;
+    height: 32px;
+    border: 1px solid #d4dce6;
+    border-radius: 3px;
+    padding: 0 8px;
+    font-size: 13px;
+    background: #fff;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.field-select:focus {
+    border-color: #EE7708;
+}
+
+.field-select:hover {
+    border-color: #999;
+}
+
+/* 删除按钮 */
+.delete-btn {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    width: 16px;
+    height: 16px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    color: #999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+
+.delete-btn:hover {
+    background: #f5f5f5;
+    color: #d93025;
+}
+
+/* 添加按钮 */
+.add-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    width: 24px;
+    height: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+
+.add-btn:hover {
+    background: #EE7708;
+    color: white;
+    border-color: #EE7708;
+}
+
+/* 操作按钮区域 */
+.field-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 20px 0;
+}
+
+/* 移动端保持桌面端一致，通过整体缩放适配 */

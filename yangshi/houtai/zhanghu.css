@@ -1,0 +1,108 @@
+/* 账户管理模块样式 */
+
+/* 账户信息展示区域 */
+.account-info-section {
+    margin-bottom: 20px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.info-label {
+    font-weight: 500;
+    color: #333;
+    min-width: 100px;
+    font-size: 14px;
+}
+
+.current-username {
+    color: #EE7708;
+    font-weight: 500;
+    font-size: 15px;
+    padding: 6px 12px;
+    background: #fff7e6;
+    border-radius: 4px;
+    border: 1px solid #ffd591;
+}
+
+/* 账户表单样式 */
+.account-form {
+    max-width: 500px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+}
+
+.form-input {
+    width: 100%;
+    height: 40px;
+    padding: 0 40px 0 12px;
+    border: 1px solid #d4dce6;
+    border-radius: 4px;
+    font-size: 14px;
+    background: #fff;
+    outline: none;
+    transition: all 0.2s;
+}
+
+.form-input:focus {
+    border-color: #EE7708;
+    box-shadow: 0 0 0 2px rgba(238, 119, 8, 0.1);
+}
+
+.form-input::placeholder {
+    color: #999;
+}
+
+.clear-input-btn {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    background: none;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 16px;
+    transition: all 0.2s;
+}
+
+.clear-input-btn:hover {
+    background: #f5f5f5;
+    color: #666;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #f0f0f0;
+}
+
+/* 移动端保持桌面端一致，通过整体缩放适配 */

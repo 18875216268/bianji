@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>药品数据搜索 - 管理中心</title>
+    <!-- 引入通用样式 -->
+    <link rel="stylesheet" href="yangshi/houtai.css">
+    <link rel="stylesheet" href="API/tongzhi.css">
+    <!-- 引入模块化样式 -->
+    <link rel="stylesheet" href="yangshi/houtai/zhanghu.css">
+    <link rel="stylesheet" href="yangshi/houtai/ziduan.css">
+    <link rel="stylesheet" href="yangshi/houtai/shuju.css">
+    <link rel="stylesheet" href="yangshi/houtai/jisuan.css">
+</head>
+<body>
+    <!-- 左侧导航栏 -->
+    <div class="sidebar">
+        <div class="logo" onclick="HoutaiModule.goHome()">药の搜索</div>
+        
+        <div class="nav-menu">
+            <button class="nav-item active" onclick="HoutaiModule.switchPanel('account-info')">账户信息</button>
+            <button class="nav-item" onclick="HoutaiModule.switchPanel('field-management')">字段管理</button>
+            <button class="nav-item" onclick="HoutaiModule.switchPanel('database-management')">数据库管理</button>
+            <button class="nav-item" onclick="HoutaiModule.switchPanel('calculation-management')">计算</button>
+        </div>
+        
+        <button class="logout-btn" onclick="HoutaiModule.logout()">退出登录</button>
+    </div>
+
+    <!-- 右侧内容区域 -->
+    <div class="main-content">
+        <!-- 账户信息面板 -->
+        <div class="content-panel active" id="account-info">
+            <div class="setting-card">
+                <div class="card-header">账户信息</div>
+                <div class="card-content">
+                    <div class="account-info-section">
+                        <!-- 当前用户名显示 -->
+                        <div class="info-item">
+                            <label class="info-label">当前用户名：</label>
+                            <span class="current-username" id="currentUsername">加载中...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="setting-card">
+                <div class="card-header">修改账户信息</div>
+                <div class="card-content">
+                    <form class="account-form" id="accountForm">
+                        <!-- 修改用户名 -->
+                        <div class="form-group">
+                            <label class="form-label">新用户名</label>
+                            <div class="input-wrapper">
+                                <input type="text" class="form-input" id="newUsername" placeholder="请输入新用户名（留空则不修改）">
+                                <button type="button" class="clear-input-btn" onclick="ZhanghuModule.clearInput('newUsername')">&times;</button>
+                            </div>
+                        </div>
+
+                        <!-- 修改密码 -->
+                        <div class="form-group">
+                            <label class="form-label">新密码</label>
+                            <div class="input-wrapper">
+                                <input type="password" class="form-input" id="newPassword" placeholder="请输入新密码（留空则不修改）">
+                                <button type="button" class="clear-input-btn" onclick="ZhanghuModule.clearInput('newPassword')">&times;</button>
+                            </div>
+                        </div>
+
+                        <!-- 确认密码 -->
+                        <div class="form-group">
+                            <label class="form-label">确认新密码</label>
+                            <div class="input-wrapper">
+                                <input type="password" class="form-input" id="confirmPassword" placeholder="请再次输入新密码">
+                                <button type="button" class="clear-input-btn" onclick="ZhanghuModule.clearInput('confirmPassword')">&times;</button>
+                            </div>
+                        </div>
+
+                        <!-- 操作按钮 -->
+                        <div class="form-actions">
+                            <button type="button" class="reset-btn" onclick="ZhanghuModule.resetAccountForm()">重置</button>
+                            <button type="submit" class="save-btn">保存修改</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- 字段管理面板 -->
+        <div class="content-panel" id="field-management">
+            <!-- 标题及副标题设置卡片 -->
+            <div class="setting-card">
+                <div class="card-header">标题及副标题展示</div>
+                <div class="card-content">
+                    <div class="title-subtitle-container">
+                        <!-- 标题卡片 -->
+                        <div class="field-card">
+                            <div class="field-card-header">标题</div>
+                            <div class="field-card-body">
+                                <select class="field-select" id="titleField">
+                                    <option value="">请选择字段</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- 副标题卡片 -->
+                        <div class="field-card">
+                            <div class="field-card-header">副标题1</div>
+                            <div class="field-card-body">
+                                <select class="field-select subtitle-select" data-index="0">
+                                    <option value="">不显示</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="field-card">
+                            <div class="field-card-header">副标题2</div>
+                            <div class="field-card-body">
+                                <select class="field-select subtitle-select" data-index="1">
+                                    <option value="">不显示</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="field-card">
+                            <div class="field-card-header">副标题3</div>
+                            <div class="field-card-body">
+                                <select class="field-select subtitle-select" data-index="2">
+                                    <option value="">不显示</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="field-card">
+                            <div class="field-card-header">副标题4</div>
+                            <div class="field-card-body">
+                                <select class="field-select subtitle-select" data-index="3">
+                                    <option value="">不显示</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 位置及字段设置卡片 -->
+            <div class="setting-card">
+                <div class="card-header">
+                    位置及字段展示
+                    <button class="add-btn" onclick="ZiduanModule.addPositionCard()">+</button>
+                </div>
+                <div class="card-content">
+                    <div class="position-container" id="positionContainer">
+                        <!-- 位置卡片将动态生成 -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- 操作按钮区域 -->
+            <div class="field-actions">
+                <button class="reset-btn" onclick="ZiduanModule.resetSettings()">重置</button>
+                <button class="save-btn" onclick="ZiduanModule.saveSettings()">保存</button>
+            </div>
+        </div>
+
+        <!-- 数据库管理面板 -->
+        <div class="content-panel" id="database-management">
+            <!-- 状态监控卡片 -->
+            <div class="setting-card">
+                <div class="card-header">数据库状态监控</div>
+                <div class="card-content">
+                    <div class="db-status-section">
+                        <div class="status-grid">
+                            <div class="status-item">
+                                <div class="status-label">Firebase连接状态</div>
+                                <div class="status-value status-loading" id="dbConnectionStatus">检查中...</div>
+                            </div>
+                            <div class="status-item">
+                                <div class="status-label">数据记录数</div>
+                                <div class="status-value status-loading" id="dbRecordCount">检查中...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 操作日志卡片 -->
+            <div class="setting-card">
+                <div class="card-header">操作日志</div>
+                <div class="card-content">
+                    <div class="db-log-section">
+                        <div class="db-log-container" id="dbLogContainer">
+                            <div class="empty-log">暂无操作记录</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 数据库操作区域 -->
+            <div class="db-actions">
+                <button class="reset-btn" onclick="ShujuModule.manualCheckStatus()" id="dbCheckBtn">状态检测</button>
+                <button class="save-btn" onclick="ShujuModule.triggerFileUpload()" id="dbUploadBtn">上传数据</button>
+                <button class="reset-btn" onclick="ShujuModule.clearAllData()" id="dbClearBtn">清除数据</button>
+            </div>
+            
+            <input type="file" class="db-file-input" id="dbFileInput" accept=".xlsx,.xls">
+        </div>
+
+        <!-- 计算管理面板 -->
+        <div class="content-panel" id="calculation-management">
+            <div class="calc-container">
+                <!-- 上方区域 -->
+                <div class="calc-top-section">
+                    <!-- 数据库字段卡片 -->
+                    <div class="calc-card">
+                        <div class="calc-card-header">数据库字段</div>
+                        <div class="calc-card-content">
+                            <div class="calc-field-list" id="dbFieldList">
+                                <!-- 数据库字段将动态生成 -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 自定义变量卡片 -->
+                    <div class="calc-card">
+                        <div class="calc-card-header">自定义变量</div>
+                        <div class="calc-card-content">
+                            <div class="calc-variable-list" id="variableList">
+                                <!-- 自定义变量将动态生成 -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 下方输入区域 -->
+                <div class="calc-bottom-section">
+                    <div class="calc-input-wrapper">
+                        <div class="calc-input-container" id="calcInputContainer" contenteditable="true" placeholder="变量名 = 表达式"></div>
+                    </div>
+                    <div class="calc-actions">
+                        <button class="reset-btn" onclick="JisuanModule.clearInput()">清除</button>
+                        <button class="save-btn" onclick="JisuanModule.confirmVariable()">确认</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 引入Firebase模块 -->
+    <script src="API/firebase.js"></script>
+    
+    <!-- 引入通知模块 -->
+    <script src="API/tongzhi.js"></script>
+    
+    <!-- 引入Excel处理库 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    
+    <!-- 引入模块化功能 -->
+    <script src="gongneng/houtai/zhanghu.js"></script>
+    <script src="gongneng/houtai/ziduan.js"></script>
+    <script src="gongneng/houtai/shuju.js"></script>
+    <script src="gongneng/houtai/jisuan.js"></script>
+    
+    <!-- 引入主后台模块 -->
+    <script src="gongneng/houtai.js"></script>
+</body>
+</html>

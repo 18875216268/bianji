@@ -1,0 +1,149 @@
+/* 数据库管理模块样式 */
+
+/* 状态监控区域 */
+.status-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.status-item {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid #e4e4e4;
+    transition: all 0.2s;
+}
+
+.status-item:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.status-label {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.status-value {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 15px;
+    display: inline-block;
+    transition: all 0.2s;
+}
+
+.status-loading {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeaa7;
+}
+
+.status-connected {
+    background: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #b8daff;
+}
+
+.status-error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* 操作按钮区域 */
+.db-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 20px 0;
+}
+
+/* 文件输入框隐藏 */
+.db-file-input {
+    display: none;
+}
+
+/* 日志区域 */
+.db-log-section {
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.db-log-container {
+    height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 12px 16px;
+    background: rgba(248, 249, 250, 0.5);
+}
+
+.db-log-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.db-log-container::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+}
+
+.db-log-container::-webkit-scrollbar-thumb {
+    background: #EE7708;
+    border-radius: 3px;
+}
+
+.db-log-container::-webkit-scrollbar-thumb:hover {
+    background: #d66607;
+}
+
+.log-item {
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.log-item:last-child {
+    border-bottom: none;
+}
+
+.log-success {
+    color: #155724;
+}
+
+.log-error {
+    color: #721c24;
+}
+
+.log-info {
+    color: #0c5460;
+}
+
+.log-timestamp {
+    font-size: 11px;
+    color: #666;
+    margin-right: 8px;
+    font-weight: 500;
+}
+
+.empty-log {
+    text-align: center;
+    color: #999;
+    font-style: italic;
+    padding: 30px 20px;
+    font-size: 14px;
+}
+
+/* 布局调整 */
+.db-status-section {
+    margin-bottom: 0;
+}
+
+/* 移动端保持桌面端一致，通过整体缩放适配 */

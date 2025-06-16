@@ -1,0 +1,243 @@
+/* 计算模块样式 */
+
+/* 主容器 */
+.calc-container {
+    height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* 上方区域 - 占2/3高度 */
+.calc-top-section {
+    flex: 2;
+    display: flex;
+    gap: 20px;
+    min-height: 0;
+}
+
+/* 下方区域 - 占1/3高度 */
+.calc-bottom-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* 卡片样式 */
+.calc-card {
+    flex: 1;
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.calc-card-header {
+    background: #f8f9fa;
+    padding: 15px 20px;
+    border-bottom: 1px solid #e4e4e4;
+    font-weight: 500;
+    font-size: 14px;
+    color: #333;
+}
+
+.calc-card-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px;
+}
+
+/* 滚动条样式 */
+.calc-card-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.calc-card-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+}
+
+.calc-card-content::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 3px;
+}
+
+.calc-card-content::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
+
+/* 字段列表项 */
+.calc-field-item, .calc-variable-item {
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 14px;
+    user-select: none;
+}
+
+/* 数据库字段样式 */
+.calc-field-item {
+    background: #e6f7ff;
+    border: 1px solid #91d5ff;
+    color: #0050b3;
+}
+
+.calc-field-item:hover {
+    background: #bae7ff;
+    border-color: #69c0ff;
+}
+
+/* 自定义变量样式 */
+.calc-variable-item {
+    background: #fff7e6;
+    border: 1px solid #ffd591;
+    color: #d46b08;
+    position: relative;
+}
+
+.calc-variable-item:hover {
+    background: #ffe7ba;
+    border-color: #ffc069;
+}
+
+/* 变量删除按钮 */
+.calc-delete-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 10px;
+    height: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.calc-variable-item:hover .calc-delete-btn {
+    opacity: 1;
+}
+
+.calc-delete-btn:hover {
+    color: #666;
+}
+
+/* 变量名 */
+.calc-variable-name {
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+/* 变量公式 */
+.calc-variable-formula {
+    font-size: 12px;
+    color: #8c8c8c;
+    font-family: 'Consolas', 'Monaco', monospace;
+    word-break: break-all;
+}
+
+/* 输入区域 */
+.calc-input-wrapper {
+    flex: 1;
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    border-radius: 6px;
+    padding: 20px;
+}
+
+.calc-input-container {
+    width: 100%;
+    height: 100%;
+    min-height: 100px;
+    padding: 15px;
+    background: #f8f9fa;
+    border: 1px solid #d4dce6;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.6;
+    overflow-y: auto;
+    outline: none;
+    font-family: 'Consolas', 'Monaco', monospace;
+}
+
+.calc-input-container:focus {
+    border-color: #EE7708;
+    background: #fff;
+}
+
+/* 占位符样式 */
+.calc-input-container:empty:before {
+    content: attr(placeholder);
+    color: #999;
+    pointer-events: none;
+}
+
+/* 标签样式 */
+.calc-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    margin: 0 2px;
+    border-radius: 3px;
+    font-size: 13px;
+    font-weight: 500;
+    user-select: none;
+    cursor: default;
+    vertical-align: middle;
+}
+
+/* 字段标签 */
+.calc-tag-field {
+    background: #e6f7ff;
+    border: 1px solid #91d5ff;
+    color: #0050b3;
+}
+
+/* 变量标签 */
+.calc-tag-variable {
+    background: #fff7e6;
+    border: 1px solid #ffd591;
+    color: #d46b08;
+}
+
+/* 选中的标签 */
+.calc-tag.selected {
+    outline: 2px solid #EE7708;
+    outline-offset: 1px;
+}
+
+/* 操作按钮区域 */
+.calc-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* 空状态 */
+.calc-empty {
+    text-align: center;
+    color: #999;
+    font-style: italic;
+    padding: 30px 20px;
+    font-size: 13px;
+}
+
+/* 加载状态 */
+.calc-loading {
+    text-align: center;
+    color: #666;
+    padding: 30px 20px;
+    font-size: 13px;
+}
+
+/* 移动端保持桌面端一致，通过整体缩放适配 */

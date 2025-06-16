@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>药品数据搜索</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="yangshi/denglu.css">
+</head>
+<body>
+    <!-- 登录按钮 -->
+    <button class="login-btn" id="loginBtn" onclick="LoginModule.handleLoginClick()">登录</button>
+
+    <!-- 登录弹窗 -->
+    <div class="login-modal" id="loginModal">
+        <div class="login-modal-content">
+            <button class="login-close" onclick="LoginModule.hideModal()">&times;</button>
+            <h2 class="login-title">登&nbsp;&nbsp;&nbsp;&nbsp;录</h2>
+            <form id="loginForm" onsubmit="LoginModule.handleLogin(event)">
+                <div class="login-input-wrapper">
+                    <input type="text" id="username" name="username" required placeholder="账号">
+                    <button type="button" class="login-clear-btn" onclick="LoginModule.clearInput('username')">&times;</button>
+                </div>
+                <div class="login-input-wrapper">
+                    <input type="password" id="password" name="password" required placeholder="密码">
+                    <button type="button" class="login-clear-btn" onclick="LoginModule.clearInput('password')">&times;</button>
+                </div>
+                <div class="login-error" id="loginError"></div>
+                <button type="submit" class="login-submit">登录</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 首页 -->
+    <div class="page active" id="homepage">
+        <div class="logo" onclick="App.goHome()">
+            <img src="logo.png" alt="药品数据搜索">
+        </div>
+        <div class="search-wrapper" data-search="main">
+            <div class="search-input-wrapper">
+                <input type="text" class="search-input" placeholder="搜索药品信息..." autofocus>
+                <button class="clear-btn" title="清除搜索内容">×</button>
+            </div>
+            <button class="search-btn">搜索</button>
+        </div>
+        <div class="search-tips">
+            <h4>搜索提示</h4>
+            <ul>
+                <li><code>空格</code>：表示"并且"，查找同时包含多个关键词的结果。</li>
+                <li><code>","</code>：表示"或者"，查找包含任一关键词的结果。</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 结果页 -->
+    <div class="page" id="resultsPage">
+        <div class="header">
+            <div class="header-container">
+                <div class="logo" onclick="App.goHome()">
+                    <img src="logo.png" alt="药品数据搜索">
+                </div>
+                <div class="search-wrapper" data-search="header">
+                    <div class="search-input-wrapper">
+                        <input type="text" class="search-input" placeholder="搜索药品信息...">
+                        <button class="clear-btn" title="清除搜索内容">×</button>
+                    </div>
+                    <button class="search-btn">搜索</button>
+                </div>
+            </div>
+        </div>
+        <div class="results-container">
+            <div class="results-info">搜索中...</div>
+            <div id="resultsContent">
+                <div class="loading">
+                    <div class="loading-spinner"></div>
+                    正在搜索数据...
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 引入Firebase模块 -->
+    <script src="API/firebase.js"></script>
+    
+    <!-- 引入功能模块 -->
+    <script src="gongneng/chaxun.js"></script>
+    <script src="gongneng/denglu.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+/* 通知模块样式 */
+
+/* 通知容器 */
+.notification-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10000;
+    pointer-events: none;
+}
+
+/* 通知基础样式 */
+.notification {
+    min-width: 300px;
+    max-width: 400px;
+    margin-bottom: 10px;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-left: 4px solid #ddd;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.3s ease;
+    pointer-events: auto;
+    overflow: hidden;
+}
+
+/* 显示动画 */
+.notification.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* 隐藏动画 */
+.notification.hide {
+    opacity: 0;
+    transform: translateX(100%);
+}
+
+/* 通知内容 */
+.notification-content {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    position: relative;
+}
+
+/* 通知图标 */
+.notification-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+/* 通知消息 */
+.notification-message {
+    flex: 1;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #333;
+    word-break: break-word;
+}
+
+/* 关闭按钮 */
+.notification-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 20px;
+    height: 20px;
+    border: none;
+    background: none;
+    color: #999;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.notification-close:hover {
+    background: rgba(0, 0, 0, 0.1);
+    color: #666;
+}
+
+/* 成功通知 */
+.notification-success {
+    border-left-color: #52c41a;
+}
+
+.notification-success .notification-icon {
+    background: #52c41a;
+}
+
+/* 错误通知 */
+.notification-error {
+    border-left-color: #ff4d4f;
+}
+
+.notification-error .notification-icon {
+    background: #ff4d4f;
+}
+
+/* 警告通知 */
+.notification-warning {
+    border-left-color: #faad14;
+}
+
+.notification-warning .notification-icon {
+    background: #faad14;
+}
+
+/* 信息通知 */
+.notification-info {
+    border-left-color: #1890ff;
+}
+
+.notification-info .notification-icon {
+    background: #1890ff;
+}
+
+/* 移动端适配 */
+@media (max-width: 480px) {
+    .notification-container {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+    }
+    
+    .notification {
+        min-width: auto;
+        max-width: none;
+    }
+    
+    .notification-content {
+        padding: 12px;
+    }
+    
+    .notification-message {
+        font-size: 13px;
+    }
+}

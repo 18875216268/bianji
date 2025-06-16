@@ -1,0 +1,151 @@
+/* 登录按钮样式 */
+.login-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #EE7708;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 1000;
+    font-family: inherit;
+}
+
+.login-btn:hover {
+    background: #d66607;
+}
+
+/* 登录弹窗 */
+.login-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-modal.show {
+    display: flex;
+}
+
+.login-modal-content {
+    background: white;
+    border-radius: 8px;
+    width: 300px;
+    padding: 30px;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+/* 关闭和清除按钮通用样式 */
+.login-close, .login-clear-btn {
+    background: none;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-close:hover, .login-clear-btn:hover {
+    color: #666;
+}
+
+.login-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 20px;
+    width: 25px;
+    height: 25px;
+}
+
+.login-title {
+    text-align: center;
+    color: #EE7708;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 0 25px 0;
+    letter-spacing: 2px;
+}
+
+.login-input-wrapper {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.login-modal-content input {
+    width: 100%;
+    padding: 12px 35px 12px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.login-modal-content input:focus {
+    border-color: #EE7708;
+}
+
+.login-clear-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    width: 20px;
+    height: 20px;
+    display: none;
+}
+
+.login-clear-btn.show {
+    display: flex;
+}
+
+.login-error {
+    color: #d93025;
+    font-size: 13px;
+    margin-bottom: 5px;
+    min-height: 16px;
+    text-align: center;
+}
+
+.login-submit {
+    width: 100%;
+    padding: 12px;
+    background: #EE7708;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.login-submit:hover {
+    background: #d66607;
+}
+
+.login-submit:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+/* 移动端响应式 */
+@media (max-width: 480px) {
+    .login-modal-content {
+        width: 280px;
+        padding: 25px;
+    }
+}
